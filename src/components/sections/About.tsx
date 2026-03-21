@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring, usePointerEvent } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { User, Cpu, Code2 } from "lucide-react";
 import { SectionHeading } from "../ui/SectionHeading";
 
