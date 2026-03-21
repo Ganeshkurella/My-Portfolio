@@ -68,18 +68,30 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-          <a href="#projects">
-            <Button variant="primary" size="lg" className="w-full sm:w-auto overflow-hidden group shadow-[0_0_20px_rgba(0,255,204,0.3)]">
-              <span className="relative z-10 flex items-center gap-2 font-mono tracking-tight">
-                <Terminal className="w-4 h-4" /> Execute Projects
-              </span>
-            </Button>
-          </a>
-          <a href="#contact">
-            <Button variant="outline" size="lg" className="w-full sm:w-auto font-mono backdrop-blur-sm bg-black/10">
-              Initialize Contact
-            </Button>
-          </a>
+          <Button 
+            onClick={() => {
+              const el = document.getElementById("projects");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
+            variant="primary" 
+            size="lg" 
+            className="w-full sm:w-auto overflow-hidden group shadow-[0_0_20px_rgba(0,255,204,0.3)]"
+          >
+            <span className="relative z-10 flex items-center gap-2 font-mono tracking-tight">
+              <Terminal className="w-4 h-4" /> Execute Projects
+            </span>
+          </Button>
+          <Button 
+             onClick={() => {
+               const el = document.getElementById("contact");
+               if (el) el.scrollIntoView({ behavior: "smooth" });
+             }}
+             variant="outline" 
+             size="lg" 
+             className="w-full sm:w-auto font-mono backdrop-blur-sm bg-black/10"
+          >
+            Initialize Contact
+          </Button>
         </motion.div>
       </div>
 

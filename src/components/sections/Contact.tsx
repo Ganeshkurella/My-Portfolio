@@ -52,24 +52,24 @@ export function Contact() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10">
-            <a href="mailto:kurellaganesh123@gmail.com" className="w-full sm:w-auto">
-              <motion.button 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-foreground text-background font-mono rounded-full font-bold hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-shadow"
-              >
-                <Mail className="w-5 h-5" /> ping --email
-              </motion.button>
-            </a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-              <motion.button 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full flex items-center justify-center gap-3 px-8 py-4 glass-panel font-mono rounded-full hover:bg-white/5 transition-colors border border-white/10"
-              >
-                <Download className="w-5 h-5" /> Download_CV
-              </motion.button>
-            </a>
+            <motion.a 
+              href="mailto:kurellaganesh123@gmail.com"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-foreground text-background font-mono rounded-full font-bold hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-shadow"
+            >
+              <Mail className="w-5 h-5" /> ping --email
+            </motion.a>
+            <motion.a 
+              href="/resume.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 glass-panel font-mono rounded-full hover:bg-white/5 transition-colors border border-white/10"
+            >
+              <Download className="w-5 h-5" /> Download_CV
+            </motion.a>
           </div>
 
           <div className="flex items-center justify-center gap-10 mt-20 relative z-10">
