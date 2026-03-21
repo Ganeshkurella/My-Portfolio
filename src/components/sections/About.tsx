@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { User, Cpu, Code2 } from "lucide-react";
 import { SectionHeading } from "../ui/SectionHeading";
 
@@ -9,7 +10,7 @@ export function About() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start end", "end start"] });
   
-  // Parallax layers
+  // Parallax layers (inverted for the new layout)
   const y1 = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
   const y2 = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
 
@@ -27,6 +28,47 @@ export function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
           
+          {/* Swapped: Image on Left */}
+          <motion.div style={{ y: y2 }} className="relative h-full flex items-center justify-center">
+            {/* Continuous Floating Layer */}
+            <motion.div
+              animate={{ y: [-15, 15, -15] }}
+              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+              className="w-full flex justify-center"
+            >
+              {/* Holographic Image Container */}
+              <motion.div 
+                className="relative aspect-[2/3] w-full max-w-sm rounded-[2rem] p-[2px] bg-gradient-to-br from-[#00ffcc]/50 via-zinc-800 to-[#00bfff]/50 group cursor-pointer shadow-[0_30px_60px_rgba(0,255,204,0.15)] hover:shadow-[0_30px_80px_rgba(0,255,204,0.3)] transition-all duration-700"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="absolute inset-0 bg-[#00ffcc]/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              
+              <div className="relative w-full h-full rounded-[30px] overflow-hidden bg-background/90 backdrop-blur-3xl flex items-center justify-center border border-white/5">
+                
+                <Image 
+                  src="/profile.jpg" 
+                  alt="Ganesh Kurella Profile" 
+                  fill 
+                  sizes="(max-width: 768px) 100vw, 400px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  priority
+                />
+
+                {/* Simulated depth layers inside */}
+                <div className="absolute inset-0 bg-[#00ffcc]/10 mix-blend-overlay opacity-50 transition-opacity pointer-events-none" />
+                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(0,255,204,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%] animate-scan group-hover:opacity-100 opacity-50 transition-opacity pointer-events-none" />
+
+                {/* Corner markers */}
+                <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-[#00ffcc]/50 z-10" />
+                <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#00ffcc]/50 z-10" />
+                <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-[#00ffcc]/50 z-10" />
+                <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-[#00ffcc]/50 z-10" />
+              </div>
+            </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Swapped: Text on Right */}
           <motion.div style={{ y: y1 }} className="space-y-8 glass-panel p-8 md:p-12 rounded-3xl relative group">
             <div className="absolute inset-0 bg-gradient-to-br from-[#00ffcc]/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
             
@@ -53,32 +95,6 @@ export function About() {
               </div>
               <div className="flex items-center gap-2 text-[#00bfff] bg-black/40 backdrop-blur-md px-5 py-3 rounded-xl font-mono text-sm border border-[#00bfff]/30 shadow-[0_0_15px_rgba(0,191,255,0.1)] hover:shadow-[0_0_20px_rgba(0,191,255,0.3)] transition-all">
                 <Code2 className="w-4 h-4" /> Web Systems
-              </div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div style={{ y: y2 }} className="relative h-full flex items-center justify-center">
-            {/* Holographic Image Container */}
-            <motion.div 
-              className="relative aspect-square w-full max-w-sm rounded-3xl p-[1px] bg-gradient-to-br from-[#00ffcc]/50 via-zinc-800 to-[#00bfff]/50 group cursor-pointer"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              <div className="absolute inset-0 bg-[#00ffcc]/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              
-              <div className="relative w-full h-full rounded-[23px] overflow-hidden bg-background/90 backdrop-blur-3xl flex items-center justify-center font-mono text-zinc-700 text-7xl font-bold border border-white/5">
-                {/* Simulated depth layers inside */}
-                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(0,255,204,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%] animate-scan group-hover:opacity-100 opacity-50 transition-opacity" />
-                
-                <span className="relative z-10 drop-shadow-[0_0_15px_currentColor] group-hover:text-zinc-600 transition-colors duration-500">
-                  &lt;ID /&gt;
-                </span>
-
-                {/* Corner markers */}
-                <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-[#00ffcc]/50" />
-                <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#00ffcc]/50" />
-                <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-[#00ffcc]/50" />
-                <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-[#00ffcc]/50" />
               </div>
             </motion.div>
           </motion.div>
