@@ -61,9 +61,10 @@ export function Contact() {
               <Mail className="w-5 h-5" /> ping --email
             </motion.a>
             <motion.a 
-              href="/resume.pdf" 
+              href="/Ganesh_Resume.pdf" 
               target="_blank" 
               rel="noopener noreferrer"
+              download="Ganesh_Kurella_Resume.pdf"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 glass-panel font-mono rounded-full hover:bg-white/5 transition-colors border border-white/10"
