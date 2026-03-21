@@ -53,7 +53,9 @@ export function Contact() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10">
             <motion.a 
-              href="mailto:kurellaganesh123@gmail.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=kurellaganesh123@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-foreground text-background font-mono rounded-full font-bold hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-shadow"
