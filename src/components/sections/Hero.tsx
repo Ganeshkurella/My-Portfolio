@@ -194,37 +194,7 @@ export function Hero() {
           Turning ideas into real-world intelligent systems through code and discipline.
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6"
-        >
-          <MagneticButton 
-            onClick={() => {
-              const el = document.getElementById("projects");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
-            }}
-            variant="primary" 
-            size="lg"
-            className="w-full sm:w-auto shadow-[0_0_20px_rgba(0,255,204,0.3)] z-20 rounded-md"
-          >
-            <span className="relative z-10 flex items-center gap-2 font-mono tracking-tight">
-              <Terminal className="w-4 h-4" /> View Work
-            </span>
-          </MagneticButton>
 
-          <MagneticButton 
-             onClick={() => {
-               window.open("/resume.pdf", "_blank");
-             }}
-             variant="outline" 
-             size="lg" 
-             className="w-full sm:w-auto font-mono backdrop-blur-sm bg-black/10 z-20 rounded-md"
-          >
-            Download Resume
-          </MagneticButton>
-        </motion.div>
       </div>
 
       <motion.div

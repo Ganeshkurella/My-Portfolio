@@ -27,37 +27,40 @@ export function TerminalIntro() {
   useEffect(() => {
     if (!show) return;
 
-    let timeout: NodeJS.Timeout;
+    let isCancelled = false;
+    const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-    const typeLine = (lineIndex: number, charIndex: number) => {
-      if (lineIndex >= script.length) {
-        timeout = setTimeout(() => {
-          setPhase(-1);
-          sessionStorage.setItem("introSeen", "true");
-          setShow(false);
-        }, 800);
-        return;
-      }
+    const playIntro = async () => {
+      await sleep(500); // Initial delay
 
-      const fullText = script[lineIndex];
-
-      if (charIndex <= fullText.length) {
-        setCurrentLineText(fullText.slice(0, charIndex));
-        timeout = setTimeout(() => typeLine(lineIndex, charIndex + 1), Math.random() * 40 + 30);
-      } else {
+      for (let i = 0; i < script.length; i++) {
+        const fullText = script[i];
+        for (let j = 0; j <= fullText.length; j++) {
+          if (isCancelled) return;
+          setCurrentLineText(fullText.slice(0, j));
+          await sleep(Math.random() * 40 + 30); // Typing speed
+        }
+        if (isCancelled) return;
         setLines((prev) => [...prev, fullText]);
         setCurrentLineText("");
-        timeout = setTimeout(() => typeLine(lineIndex + 1, 0), 400); // pause between lines
+        await sleep(400); // Pause between lines
       }
+
+      if (isCancelled) return;
+      setPhase(-1); // Hide cursor before unmounting
+      await sleep(800);
+      
+      if (isCancelled) return;
+      sessionStorage.setItem("introSeen", "true");
+      setShow(false);
     };
 
-    if (phase === 0) {
-      timeout = setTimeout(() => typeLine(0, 0), 500); // initial delay
-      setPhase(1); // started
-    }
+    playIntro();
 
-    return () => clearTimeout(timeout);
-  }, [phase, show]);
+    return () => {
+      isCancelled = true;
+    };
+  }, [show]);
 
   const handleSkip = () => {
     sessionStorage.setItem("introSeen", "true");
