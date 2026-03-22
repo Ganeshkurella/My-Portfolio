@@ -7,10 +7,12 @@ import { Achievements } from "@/components/sections/Achievements";
 import { BeyondCode } from "@/components/sections/BeyondCode";
 import { Contact } from "@/components/sections/Contact";
 import { AnimatedBackground } from "@/components/ui/AnimatedBackground";
+import { TerminalIntro } from "@/components/ui/TerminalIntro";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#050505] text-[#ededed] overflow-hidden selection:bg-[#00ffcc] selection:text-black relative">
+      <TerminalIntro />
       <AnimatedBackground />
       <Navbar />
       <Hero />
