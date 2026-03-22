@@ -76,14 +76,14 @@ export function About() {
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
               className="text-foreground text-lg md:text-xl leading-relaxed font-light"
             >
-              I am a student at CMRIT on a mission to become an elite AI Engineer. Currently, I hold strong foundational knowledge in both Artificial Intelligence and modern Web technologies. Combining these two domains allows me to build products that are both robust in their overarching logic and engaging in their user experience.
+              I am an <span className="font-medium text-zinc-200 hover:text-[#00ffcc] hover:drop-shadow-[0_0_15px_rgba(0,255,204,0.8)] transition-all duration-300 cursor-default">AI Engineer</span> focused on solving real-world problems. My technical approach revolves around seamlessly combining intelligent <span className="font-medium text-zinc-200 hover:text-[#00ffcc] hover:drop-shadow-[0_0_15px_rgba(0,255,204,0.8)] transition-all duration-300 cursor-default">machine learning</span> models with scalable, modern <span className="font-medium text-zinc-200 hover:text-[#00bfff] hover:drop-shadow-[0_0_15px_rgba(0,191,255,0.8)] transition-all duration-300 cursor-default">web systems</span>.
             </motion.p>
             
             <motion.p 
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-zinc-500 text-lg md:text-xl leading-relaxed"
+              className="text-zinc-400 text-lg md:text-xl leading-relaxed font-light"
             >
-              My passion lies in bridging the gap between intelligent machine learning models and seamless, fast web architectures. Whether it&apos;s predicting outcomes or detecting anomalies, I aim to create systems that look visually stunning and solve real world problems securely.
+              I maintain a strong, uncompromising focus on discipline and sheer <span className="font-medium text-zinc-200 hover:text-[#cc00ff] hover:drop-shadow-[0_0_15px_rgba(204,0,255,0.8)] transition-all duration-300 cursor-default">Execution</span>. I am constantly active in competitive hackathons and dedicated to building real, robust projects. Currently, I am expanding my computational foundation by rigorously learning <span className="font-medium text-zinc-200 hover:text-[#00ffcc] hover:drop-shadow-[0_0_15px_rgba(0,255,204,0.8)] transition-all duration-300 cursor-default">DSA in Java</span>.
             </motion.p>
             
             <motion.div 

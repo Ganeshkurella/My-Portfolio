@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Layers } from "lucide-react";
 import { SectionHeading } from "../ui/SectionHeading";
+import { Marquee } from "../ui/Marquee";
 
 const skillCategories = [
   {
@@ -45,6 +46,9 @@ export function Skills() {
       />
 
       <div className="container mx-auto px-6 relative z-10">
+        <div className="mb-20 w-full overflow-hidden rounded-full">
+          <Marquee />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {skillCategories.map((category, idx) => (
             <motion.div

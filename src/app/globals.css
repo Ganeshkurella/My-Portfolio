@@ -84,3 +84,12 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
   z-index: 0;
 }
+
+/* Infinite Marquee */
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
